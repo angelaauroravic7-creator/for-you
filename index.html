@@ -1,0 +1,773 @@
+<!DOCTYPE html><html lang="en">  <head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Private Message For Noel</title><style>  *{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+#musicPlayer{
+position:fixed;
+bottom:15px;
+left:15px;
+
+font-size:10px;
+
+background:rgba(0,0,0,0.6);
+
+padding:8px 12px;
+
+border:1px solid rgba(212,175,55,0.4);
+
+border-radius:15px;
+
+color:#d4af37;
+
+opacity:0.6;
+
+z-index:999;
+}
+#finalPage .card{
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+#finalPage{
+  align-items:flex-start;
+  padding-top:40px;
+  padding-bottom:40px;
+  overflow-y:auto;
+}
+.card{
+  scroll-behavior:smooth;
+}
+#letterText{
+
+width:750px;
+max-width:75vw;
+
+line-height:1.9;
+
+font-size:17px;
+
+text-align:left;
+
+}
+font-family: Georgia, serif;
+background: linear-gradient(135deg,#181512,#0f0f0f);
+color:#f5f1eb;
+overflow:hidden;
+height:100vh;
+}
+
+.page{
+display:none;
+width:100%;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:30px;
+animation:fade 1s ease;
+}
+
+.active{
+display:flex;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(212,175,55,0.3);
+padding:35px;
+border-radius:25px;
+backdrop-filter:blur(8px);
+max-width:500px;
+width:90%;
+}
+
+.gold{
+color:#d4af37;
+}
+
+h1{
+font-size:3rem;
+margin-bottom:10px;
+}
+
+h2{
+margin-bottom:15px;
+}
+
+p{
+line-height:1.8;
+}
+
+.btn{
+margin-top:20px;
+padding:12px 28px;
+border:1px solid #d4af37;
+background:transparent;
+color:#d4af37;
+border-radius:30px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#d4af37;
+color:black;
+}
+
+input{
+margin-top:15px;
+padding:12px;
+width:220px;
+border:none;
+border-radius:12px;
+text-align:center;
+font-size:1rem;
+}
+
+.lock{
+font-size:5rem;
+margin-bottom:15px;
+}
+
+#countNumber{
+font-size:7rem;
+color:#d4af37;
+}
+.gallery{
+
+display:flex;
+gap:15px;
+justify-content:center;
+flex-wrap:wrap;
+
+}
+
+.memory{
+
+width:180px;
+height:230px;
+
+object-fit:cover;
+
+border:2px solid #d4af37;
+
+cursor:pointer;
+
+filter:grayscale(100%);
+
+transition:.4s;
+
+}
+
+.memory:hover{
+
+transform:scale(1.05);
+
+filter:grayscale(0%);
+
+}
+</style></head><body><!-- PAGE 1 --><div class="page active" id="intro"><div class="card"><h2 class="gold">Private Access</h2><p>
+Only one person can access this message.
+
+</p><button class="btn" onclick="goPassword()">  
+Continue  
+</button></div></div><!-- PAGE 2 --><div class="page" id="passwordPage"><div class="card"><div class="lock">🔒</div><h2>Access Restricted</h2><p>You Need Password</p><input  
+type="password"  
+id="passwordInput"  
+placeholder="Enter Password">  <br><button class="btn" onclick="checkPassword()">
+Unlock
+</button></div></div><!-- PAGE 3 --><div class="page" id="surprisePage"><div class="card"><h2 class="gold">
+A Little Surprise
+
+</h2><p>  
+Made with sincerity.  
+</p></div></div><!-- PAGE 4 --><div class="page" id="helloPage"><div class="card"><h1>HELLO</h1><h2 class="gold">  
+Noel  
+</h2><button class="btn" onclick="startCountdown()">  
+YES PLEASE  
+</button><br><button class="btn" onclick="showNoThanks()">  
+NO THANKS  
+</button></div></div><!-- PAGE 5 --><div class="page" id="noThanksPage"><div class="card"><h2>  
+I promise you'll like it  
+</h2><button class="btn" onclick="backToHello()">  
+TRY AGAIN  
+</button></div></div><!-- PAGE 6 --><div class="page" id="countdownPage"><h1 id="countNumber">  
+3  
+</h1>  
+</div>  
+<!-- PAGE 7 -->  
+<!-- CONFESSION PAGE -->  <div class="page" id="confessPage">  <div class="card">  <div style="display:flex;gap:35px;align-items:flex-start;">  <img src="noel1.jpg"  
+style="  
+width:200px;  
+height:280px;  
+object-fit:cover;  
+border:1px solid gold;  
+border-radius:12px;  
+">
+
+<div>  <h2 class="gold">  
+A Message For You  
+</h2>  <div id="letterText"></div>  
+</div>  </div>  </div>  <br>  <div style="display:flex;justify-content:center;gap:15px;">  <button class="btn" onclick="prevLetter()">  
+←  
+</button>  <span id="letterIndicator">  
+1 / 5  
+</span>  <button class="btn" onclick="nextLetter()">  
+→  
+</button>  </div>  <br>  <div id="letterContinue" style="display:none;">  <button class="btn" onclick="backToGallery()">  
+CONTINUE  
+</button> 
+</div>  
+</div>  
+</div>  
+<div class="page" id="galleryPage">  <div class="card">  <h2 class="gold">  
+Memories  
+</h2>  <p style="margin-bottom:20px;">  
+Click every photo  
+</p>  
+<div class="gallery">  
+<img  src="noel1.jpg"  class="memory"  
+onclick="openPhoto1()">
+
+<img  src="noel2.jpg"  class="memory"  
+onclick="openPhoto2()">
+
+<img  src="noel3.jpg"  class="memory"  
+onclick="openPhoto3()">
+
+</div>  </div>  </div>  
+<div class="page" id="likePage">  
+<div class="card" style="
+max-height:80vh;
+overflow-y:auto;
+padding-right:10px;
+">
+
+<h2 class="gold">  
+Things I Like About You  
+</h2>  <br>  <div style="  
+text-align:left;  
+line-height:2;  
+font-size:17px;  
+">  ⭐ Your Smile<br>
+⭐ Your Laugh<br>
+⭐ Your Eyes<br>
+⭐ Your Attitude<br>
+⭐ Your Personality<br>
+⭐ Your Comfort<br>
+⭐ Your Voice<br>
+⭐ Your Handsome Face<br>
+⭐ Your Jokes<br>
+⭐ Your Hair<br>
+⭐ Your Confidence<br>
+⭐ Your Energy<br>
+⭐ Your Creativity<br>
+⭐ Your Honesty<br>
+⭐ Your Intelligence<br>
+⭐ Your Worthiness<br>
+⭐ Your Support<br>
+⭐ Your Style<br>
+⭐ Your Words<br>
+⭐ Your Advice<br>
+⭐ Your Kindness<br>
+⭐ Your Courage<br>
+⭐ Your Patience<br>
+⭐ Your Stories<br>
+⭐ Your Ideas<br>
+⭐ Your Strength<br>
+⭐ Your Excitement<br>
+⭐ Your Forgiveness<br>
+⭐ Your Talent<br>
+⭐ Your Understanding<br>
+⭐ Your Questions<br>
+⭐ Your Height<br>
+⭐ Your Randomness<br>
+⭐ Your Awkwardness<br>
+⭐ Your Greetings<br>
+⭐ Your Grace<br>
+⭐ Your Humbleness<br>
+⭐ Your Sorrow<br>
+⭐ Your Perspective<br>
+⭐ Your Reassurance<br>
+⭐ Your Skill<br>
+⭐ Your Trust<br>
+⭐ Your Faith<br>
+⭐ Your Help<br>
+⭐ Your Nicknames<br>
+⭐ Your Respectfulness<br>
+⭐ Your Goals<br>
+⭐ Your Hopes<br>
+⭐ Your Interest<br>
+⭐ Your Empathy<br>
+⭐ Your Success<br>
+⭐ Your Accountability<br>
+⭐ Your Playfulness<br>
+⭐ Your Gratefulness<br>
+⭐ Your Existence<br>
+⭐ Your Concern<br>
+⭐ Your Eyelashes<br>
+⭐ Your Excellence<br>
+⭐ Your Beliefs<br>
+⭐ Your Emotions<br>
+⭐ Your Name<br>
+⭐ Your Cleanliness<br>
+⭐ Your Vibe<br>
+⭐ Your Photogenic Side<br>
+⭐ Your Dedication<br>
+⭐ Your Eyebrows<br>
+⭐ Your Openness<br>
+⭐ Your Maturity<br>
+⭐ Your Affection<br>
+⭐ Your Promises<br>
+⭐ Your Humor<br>
+⭐ Your Actions<br>
+⭐ Your Uniqueness<br>
+⭐ Your Childlike Side<br>
+⭐ Your Soul<br>
+⭐ Your Coolness<br>
+⭐ Your Responses<br>
+⭐ Your Gaming Skills<br>
+⭐ Your Activeness<br>
+⭐ Your Memory<br>
+⭐ Your Joy<br>
+⭐ Your Noises<br>
+⭐ Your Nose<br>
+⭐ Your Favorite Colors<br>
+⭐ Your Reliability<br>
+⭐ You Are You
+</div>  <br><br>
+
+<div style="text-align:right;">  <button class="btn" onclick="backToGallery()">  
+CONTINUE  
+</button>  </div>  </div>  </div>  
+<div class="page" id="finalPage">  <div class="card">  <h2 class="gold">  
+One Last Thing...  
+</h2>  <br>  <div style="  
+text-align:left;  
+line-height:2;  
+font-size:17px;  
+">  Kalau selama ini aku sering keliatan salting, sering nyari keberadaan kamu, atau kadang bikin situasi jadi awkward...
+
+ya itu karena aku suka 
+
+<br><br>
+
+Sebenernya sesimpel itu.
+
+<br><br>
+
+Aku ga berharap kamu harus ngebales perasaan aku.
+
+Aku juga ga berharap setelah ini semuanya berubah.
+
+<br><br>
+
+Aku cuma pengen jujur sekali aja.
+
+Karena menurut aku, perasaan yang baik ga seharusnya terus disimpan sendirian.
+
+<br><br>
+
+Dan kalau ada satu hal yang pengen aku titip...
+
+tetap jadi Noel yang sekarang.
+
+<br><br>
+
+Tetap kejar cita-cita kamu.
+
+Tetap jadi anak baik.
+
+Tetap jadi orang yang bikin banyak orang bangga.
+
+<br><br>
+
+Karena aku yakin masa depan kamu bakal keren banget.
+
+🤍
+
+</div>  <br><br>
+
+<div style="text-align:center; margin-top:20px;">
+<button class="btn" onclick="showEndPage()">
+CONTINUE
+</button>
+</div>
+</div>  
+</div>  <!-- ini penutup finalPage -->
+<!-- END PAGE -->
+<div class="page" id="endPage">
+  <div class="card">
+    <h1 class="gold">Thank You For Reading</h1>
+    <p style="margin-top:15px; opacity:0.8;">
+      — Angel
+    </p>
+      <button class="btn" onclick="backToGallery()">
+      BACK
+    </button>
+  </div>
+</div>
+<audio id="bgMusic" autoplay loop>  
+<audio controls>
+</audio>
+<source src="sing.mp3" type="audio/mp3">  
+</audio>  <div id="musicPlayer">  
+♫ For Noel ♫  
+</div>  </div>  
+<script>  function hideAllPages(){
+
+document
+.querySelectorAll(".page")
+.forEach(page=>{
+
+page.classList.remove("active");
+
+});
+
+}
+
+function goPassword(){
+
+hideAllPages();
+
+document
+.getElementById("passwordPage")
+.classList.add("active");
+
+}
+
+function checkPassword(){
+
+const password =
+document
+.getElementById("passwordInput")
+.value;
+
+if(password === "01082009"){
+
+hideAllPages();
+
+document
+.getElementById("surprisePage")
+.classList.add("active");
+
+setTimeout(()=>{
+
+hideAllPages();
+
+document
+.getElementById("helloPage")
+.classList.add("active");
+
+},2500);
+
+}else{
+
+alert("Incorrect Password");
+
+}
+
+}
+
+function showNoThanks(){
+
+hideAllPages();
+
+document
+.getElementById("noThanksPage")
+.classList.add("active");
+
+}
+
+function backToHello(){
+
+hideAllPages();
+
+document
+.getElementById("helloPage")
+.classList.add("active");
+
+}
+
+function startCountdown(){
+
+hideAllPages();
+
+document
+.getElementById("countdownPage")
+.classList.add("active");
+
+let count = 3;
+
+const number =
+document
+.getElementById("countNumber");
+
+number.innerText = count;
+
+const timer = setInterval(()=>{
+
+count--;
+
+if(count >= 0){
+
+number.innerText = count;
+
+}
+
+if(count < 0){
+
+clearInterval(timer);
+
+hideAllPages();
+
+document
+.getElementById("galleryPage")
+.classList.add("active");
+
+}
+
+},1000);
+
+}
+let photo1Read = false;
+let photo2Read = false;
+let photo3Read = false;
+
+function checkAllRead(){
+
+if(
+photo1Read &&
+photo2Read &&
+photo3Read
+){
+
+}
+
+}
+
+function openPhoto1(){
+
+photo1Read = true;
+
+hideAllPages();
+
+document
+.getElementById("confessPage")
+.classList.add("active");
+currentSlide = 0;
+updateLetter();
+
+checkAllRead();
+
+}
+
+function openPhoto2(){
+
+photo2Read = true;
+
+hideAllPages();
+
+document
+.getElementById("likePage")
+.classList.add("active");
+
+checkAllRead();
+
+}
+
+function openPhoto3(){
+
+photo3Read = true;
+
+hideAllPages();
+
+document
+.getElementById("finalPage")
+.classList.add("active");
+
+checkAllRead();
+
+}
+const confessionSlides = [
+
+`<p>
+
+Hi Noel, ini aku Angel.
+
+<br><br>
+
+Aku cuma mau bilang makasih ya, karena selama kurang lebih satu tahun ini kamu udah jadi salah satu penyemangat hidup aku.
+
+<br><br>
+
+Mungkin selama kelas 10 ini kamu pernah denger kalau aku lagi suka sama cowok lain.
+
+Padahal sebenernya engga.
+
+Itu cuma pengalihan biar kamu ngiranya aku udah uncrush dari kamu.
+
+<br><br>
+
+Aku juga gatau kenapa bisa selama ini.
+
+Awalnya aku pikir perasaan ini bakal lewat gitu aja, tapi ternyata engga.
+
+</p>`,  `<p>
+
+Sampai akhirnya aku sadar kalau selama ini, orang yang selalu aku tunggu buat dilihat, dicari keberadaannya, dan bikin hari-hari aku lebih berwarna ya kamu.
+
+<br><br>
+
+Buat aku, kamu udah ada di titik 98% sempurna.
+
+<br><br>
+
+Kurang 2% aja karena kamu lumayan pendiem banget
+
+<br><br>
+
+Tapi serius deh, makasih karena udah bikin hari-hari aku lebih bahagia, walaupun sebenernya kamu ga ngapa-ngapain.
+
+</p>`,  `<p>
+
+Oiya, maaf ya kalau sikap aku selama ini pernah bikin kamu risih.
+
+<br><br>
+
+Sebenernya aku tuh anaknya gengsian banget.
+
+Tapi rasanya sayang aja kalau kamu ga pernah tau perasaan aku yang sebenernya.
+
+<br><br>
+
+Jujur, aku juga gatau dapet keberanian dari mana sampai bisa nyanyi di depan banyak orang dan terang-terangan bilang kalau lagu itu aku nyanyiin buat kamu.
+
+</p>`,  `<p>
+
+Di dalam doa juga, aku sering nyelipin nama kamu.
+
+<br><br>
+
+Aku selalu berdoa supaya Tuhan ngejagain kamu, lancarin jalan kamu buat gapai cita-cita kamu, dan pertemuin kamu sama orang-orang baik.
+
+<br><br>
+
+Kadang aku mikir, Tuhan bosen ga ya denger nama kamu terus di doa aku
+
+<br><br>
+
+Dan kalau suatu saat kamu lagi capek, lagi banyak pikiran, atau ngerasa pengen nyerah sama keadaan, coba inget kalau ada seseorang yang selalu nyebut nama kamu di dalam doanya.
+
+</p>`,  `<p>
+
+Makasih karena udah jadi bagian dari kebahagiaan aku selama ini.
+
+<br><br>
+
+Dan maaf kalau tanpa sadar aku pernah bikin kamu ngerasa terbebani.
+
+<br><br>
+
+Kalau setelah baca ini kamu memilih buat ngejauh, gapapa kok.
+
+Aku bakal ngerti.
+
+<br><br>
+
+Tapi kalau ternyata kamu ga keberatan, mungkin aku bakal nyimpen perasaan ini dikit lebih lama.
+
+<br><br>
+
+Bye bye Noel.
+
+<br><br>
+
+Be happy terus yaa 🤍
+
+</p>`  ];
+
+let currentSlide = 0;
+
+function updateLetter(){
+
+document.getElementById("letterText").innerHTML =
+confessionSlides[currentSlide];
+
+document.getElementById("letterIndicator").innerText =
+(currentSlide + 1) + " / 5";
+
+if(currentSlide === 4){
+
+document.getElementById("letterContinue").style.display =
+"block";
+
+}else{
+
+document.getElementById("letterContinue").style.display =
+"none";
+
+}
+
+}
+
+function nextLetter(){
+
+if(currentSlide < 4){
+
+currentSlide++;
+
+updateLetter();
+
+}
+
+}
+
+function prevLetter(){
+
+if(currentSlide > 0){
+
+currentSlide--;
+
+updateLetter();
+
+}
+
+}
+
+function backToGallery(){
+
+hideAllPages();
+
+document
+.getElementById("galleryPage")
+.classList.add("active");
+
+}
+
+updateLetter();
+function showEndPage(){
+  hideAllPages();
+  document.getElementById("endPage").classList.add("active");
+}
+</script>  
+</body>  
+</html>  
